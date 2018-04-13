@@ -79,7 +79,11 @@ public class UIManager : MonoBehaviour
 	public void ShowMessage(string str)
 	{
 		messageText.text = str;
+		Invoke ("textEmpty", 0.05f);
 	}
 
+	private void textEmpty(){
+		messageText.text = "";
+	}
 
 }

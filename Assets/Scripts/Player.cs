@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 	private Vector2 dest = Vector2.zero;
     private float targetTime=0; //use for control the bullets' cooldown time
     private float isimmune; //use for control the figure's immune time
-
+	private int nowLife;
 
     // up right left down
 
@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
 	void Start ()
 	{	
 		finish.SetActive (false);
+		nowLife = curplayerLife;
 		initialPanel.SetActive (true);
 		maxplayerLife = curplayerLife;
 		enemyArray = new GameObject[30];
@@ -72,6 +73,17 @@ public class Player : MonoBehaviour
 		if (isInitial == true) {
 			Attack ();
 		}
+		if (nowLife != curplayerLife) {
+			if (Time.time>isimmune)
+			{
+				gameObject.SendMessage("Flash", this.gameObject, SendMessageOptions.DontRequireReceiver);
+
+				isimmune =Time.time+1.2f;
+			}
+
+			//Player._instance.gameObject.SendMessage("Flash", this.gameObject, SendMessageOptions.DontRequireReceiver);
+		}
+		nowLife = curplayerLife; 
 	}
 
 	public bool hitself (Vector2 dir, int num)
@@ -154,13 +166,13 @@ public class Player : MonoBehaviour
 					flag = true;
 
                     //set immune and the figure will flash
-                    if (Time.time>isimmune)
-                    {
-                        gameObject.SendMessage("Flash", this.gameObject, SendMessageOptions.DontRequireReceiver);
-                        curplayerLife = curplayerLife - 1;
-                        isimmune = isimmune=Time.time+1.2f;
-                    }
-
+//                    if (Time.time>isimmune)
+//                    {
+//                        gameObject.SendMessage("Flash", this.gameObject, SendMessageOptions.DontRequireReceiver);
+//                        curplayerLife = curplayerLife - 1;
+//                        isimmune =Time.time+1.2f;
+//                    }
+					curplayerLife = curplayerLife - 1;
                     //record the the # of attcking enemy
 					num = i;
 

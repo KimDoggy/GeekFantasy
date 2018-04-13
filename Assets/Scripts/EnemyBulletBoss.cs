@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBulletBoss : MonoBehaviour
 {
 
-	public float moveSpeed = 0.03f;
+	public float moveSpeed = 0.1f;
 
 	private Rigidbody2D r2dE;
 	private Vector3 newPosition;
@@ -35,7 +35,7 @@ public class EnemyBullet : MonoBehaviour
 		newPosition = Vector3.MoveTowards (transform.position, hero.position, moveSpeed);
 		r2dE.MovePosition (newPosition);
 		//transform.Translate (transform.up * moveSpeed * Time.deltaTime, Space.World);
-		Destroy (gameObject, 4f);
+		Destroy (gameObject, 7f);
 	}
 
 	private void OnTriggerEnter2D (Collider2D collision)
@@ -44,7 +44,6 @@ public class EnemyBullet : MonoBehaviour
 		switch (collision.tag) {
 		case"Player":
 			Player._instance.curplayerLife = Player._instance.curplayerLife - 1;
-
 			Destroy (gameObject);
 			break;
 		default:
