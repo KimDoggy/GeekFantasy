@@ -23,10 +23,14 @@ public class Enemy : MonoBehaviour
 	private Vector2 destination;
 	private Animator anim;
 	bool loop;
+<<<<<<< HEAD
 	public GameObject enemyBulletPre;
 	private float timeVal;
 
 
+=======
+	public AudioSource enemyDied;
+>>>>>>> fb9f061d960db5719d8bc07752d4237e7ed143ba
 
 	//public int enemyLife = 3;
 
@@ -105,5 +109,8 @@ public class Enemy : MonoBehaviour
 		if (a < 10) {
 			Instantiate (enemyBulletPre, transform.position, Quaternion.Euler (transform.eulerAngles));
 		}
+	}
+	public void Audioplay(){
+		enemyDied.Play ();
 	}
 }

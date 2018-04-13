@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour {
 	public bool[] isDead = new bool[16];
 	private float distance; 
 
+
 	public static EnemyManager _instance;	
 	// Use this for initialization
 	private void Awake(){
@@ -27,13 +28,18 @@ public class EnemyManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		for (int i = 1; i < enemyGOs.Length; i++) {
-			if (enemyLife [i] < 0 && isDead[i]== false) {
+			if (enemyLife [i] <= 0 && isDead [i] == false) {
+
+
 				UIManager._instance.AddScore ();
 				enemyGOs [i].GetComponent<Enemy> ().transform.position = new Vector3 (439, -90);
 				isDead [i] = true;
+			} else if (enemyLife [i] == 1 && isDead [i] == false) {
+				Enemy._instance.Audioplay ();
 			}
 
 
 		}
 	}
+
 }

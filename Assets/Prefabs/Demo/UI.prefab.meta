@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/Demo/UI.prefab.meta
 guid: 637944f2b5c824be09df82325edc88d7
 timeCreated: 1523585532
+=======
+guid: 3f2e1768d92d4418d91d6e5bd627372e
+timeCreated: 1523579138
+>>>>>>> fb9f061d960db5719d8bc07752d4237e7ed143ba:Assets/Prefabs/Demo/UI.prefab.meta
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}
